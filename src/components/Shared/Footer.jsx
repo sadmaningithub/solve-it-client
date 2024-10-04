@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div className="bg-base-200 pb-10">
             <footer className="footer max-w-screen-2xl mx-auto text-base-content p-10">
-                <aside>
+                <aside className="flex flex-col items-center">
                     <h1 className="text-2xl font-bold">SolveIt</h1>
                     <p className="text-base font-normal">
                         Your all in one group study platform
