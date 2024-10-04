@@ -1,10 +1,7 @@
+import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
-
-    // const navLinks = <>
-    //     <li>Assignments</li>
-    // </>
 
     return (
         <div>
@@ -28,22 +25,27 @@ const NavBar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><a>Item 1</a></li>
                             
-                            <li><a>Item 3</a></li>
+                            <li> <Link> Assignments </Link> </li>
+                            <li> <Link> Create Assignment </Link> </li>
+                            <li> <Link> Pending Assignments </Link> </li>
+
                         </ul>
                     </div>
                     <a className="btn btn-ghost text-xl">SolveIt</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
                         
-                        <li><a>Item 3</a></li>
+                         <li> <Link> Assignments </Link> </li>
+                         <li> <Link> Create Assignment </Link> </li>
+                         <li> <Link> Pending Assignments </Link> </li>
+                        
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Log in</a>
+                <div className="navbar-end gap-1">
+                    <a className="btn btn-outline">Log in</a>
+                    <a className="btn btn-outline">Register</a>
                 </div>
             </div>
 
