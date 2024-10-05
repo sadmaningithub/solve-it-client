@@ -18,8 +18,8 @@ const Feature = () => {
                             <TiPencil />
                         </h1>
                         <div className="flex flex-col items-center space-y-4">
-                            <h2 className="text-xl font-medium">Track Progress & Deadlines</h2>
-                            <p className="text-center text-base font-normal max-w-xs">Keep track of all your ongoing assignments and their deadlines with our progress tracker.</p>
+                            <h2 className="text-xl font-medium">Post Assignments Easily</h2>
+                            <p className="text-center text-base font-normal max-w-xs">Create and post assignments in just a few clicks. Organize tasks for your group or the entire class.</p>
 
                         </div>
                     </div>
@@ -29,8 +29,8 @@ const Feature = () => {
                             <GiProgression />
                         </h1>
                         <div className="flex flex-col items-center space-y-4">
-                            <h2 className="text-xl font-medium">Track Progress & Deadlines</h2>
-                            <p className="text-center text-base font-normal max-w-xs">Keep track of all your ongoing assignments and their deadlines with our progress tracker.</p>
+                            <h2 className="text-xl font-medium">Browse & Take Assignments</h2>
+                            <p className="text-center text-base font-normal max-w-xs">Easily browse through posted assignments and take on challenges that fit your learning style.</p>
 
                         </div>
                     </div>
