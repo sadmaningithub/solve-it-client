@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { FaEdit } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -21,7 +22,7 @@ const Update = () => {
             })
     }, [])
 
-    const handleUpdate = e =>{
+    const handleUpdate = e => {
         e.preventDefault();
         const form = e.target;
         const title = form.title.value;
@@ -32,40 +33,41 @@ const Update = () => {
         const email = form.email.value;
         const name = form.name.value;
         const description = form.description.value;
-        const updatedDoc = {title, marks, thumbnail, level, dueDate, email, name, description}
+        const updatedDoc = { title, marks, thumbnail, level, dueDate, email, name, description }
         fetch(`http://localhost:5000/assignments/update/${id}`, {
             method: 'PUT',
             headers: {
-                'content-type':'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(updatedDoc)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.modifiedCount>0){
-                Swal.fire({
-                    title: "Updated",
-                    text: "The assignment has been updated.",
-                    icon: "success"
-                  });
-            }
-            else{
-                Swal.fire({
-                    title: "Couldn't update",
-                    text: "The assignment was not updated. Please try again after making one or more changes",
-                    icon: "error",
-                  });
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Updated",
+                        text: "The assignment has been updated.",
+                        icon: "success"
+                    });
+                }
+                else {
+                    Swal.fire({
+                        title: "Couldn't update",
+                        text: "The assignment was not updated. Please try again after making one or more changes",
+                        icon: "error",
+                    });
+                }
+            })
     }
 
     return (
-        <div>
-            <div>
-                <h1>Update</h1>
-            </div>
-            <div className="bg-base-100 shrink-0 w-full lg:max-w-lg p-5 lg:p-8 rounded-xl shadow-2xl">
+        <div className="my-12">
+            
+            <div className="bg-base-100 shrink-0 w-full lg:max-w-xl p-5 lg:p-8 rounded-xl shadow-2xl">
+                <div className="mb-5">
+                    <h1 className="flex flex-row items-center gap-1 justify-center text-xl font-medium "><FaEdit /> Edit Assignment</h1>
+                </div>
                 <form onSubmit={handleUpdate} className="">
                     <div className="form-control">
                         <label className="label">
@@ -126,7 +128,7 @@ const Update = () => {
                     </div>
 
                     <input className="btn mt-5 w-full" type="submit" value="Submit" />
-                    
+
                 </form>
             </div>
         </div>
