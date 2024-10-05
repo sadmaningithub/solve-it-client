@@ -15,7 +15,7 @@ const AssignmentDetails = () => {
         fetch(`http://localhost:5000/assignments/${id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setAssignment(data)
             })
     }, [])

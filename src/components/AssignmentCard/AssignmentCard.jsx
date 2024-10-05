@@ -58,7 +58,7 @@ const AssignmentCard = ({ assignment }) => {
                     <div className="card-actions justify-between items-center">
                         <div className="flex flex-row gap-2">
                             <Link to={`/assignments/${_id}`} className="btn "> <IoEyeOutline />View</Link>
-                            <Link className="btn "> <FaEdit />Edit</Link>
+                            <Link to={`/assignments/update/${_id}`} className="btn "> <FaEdit />Edit</Link>
                             <Link onClick={() => handleDelete(_id)} className="btn "> <MdOutlineDelete />Remove</Link>
                         </div>
                         <span className="flex flex-row items-center gap-1"> <SlCalender /> {dueDate}</span>
