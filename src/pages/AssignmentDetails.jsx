@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 const AssignmentDetails = () => {
 
     const [assignment, setAssignment] = useState([])
+    // const [isModalActive, setIsModalActive] = useState(false)
 
     const { id } = useParams();
 
@@ -34,6 +35,7 @@ const AssignmentDetails = () => {
                     <p><span className="font-medium">Due Date:</span>  {assignment.dueDate}</p>
                     <p><span className="font-medium">Description:</span> <br /> {assignment.description}</p>
                     <button className="btn">Take Assignment </button>
+                    
                 </div>
                 <div className="w-full">
                     <img src={assignment.thumbnail} alt="" />
