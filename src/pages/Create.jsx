@@ -96,7 +96,7 @@ const Create = () => {
 
                         <input className="btn mt-5 w-full" type="submit" value="Submit" />
                         <Toaster
-                        position="bottom-right"
+                        position="top-right"
                         reverseOrder={false} />
                     </form>
                 </div>
