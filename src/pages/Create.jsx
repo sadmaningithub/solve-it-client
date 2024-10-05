@@ -2,10 +2,8 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast, { Toaster } from "react-hot-toast";
+import { IoDocumentsSharp } from "react-icons/io5";
 import { MdEditDocument } from "react-icons/md";
-import { SlDocs } from "react-icons/sl";
-
-
 
 const Create = () => {
 
@@ -19,8 +17,10 @@ const Create = () => {
         const thumbnail = form.thumbnail.value;
         const level = form.level.value;
         const dueDate = form.dueDate.value;
+        const email = form.email.value;
+        const name = form.name.value;
         const description = form.description.value;
-        const assignmentDoc = { title, marks, thumbnail, level, dueDate, description };
+        const assignmentDoc = { title, marks, thumbnail, level, dueDate,email, name, description };
         console.log(assignmentDoc);
         fetch('http://localhost:5000/assignments', {
             method: 'POST',
@@ -86,6 +86,21 @@ const Create = () => {
                             </label>
                             <DatePicker className="input input-bordered w-full" name="dueDate" selected={startDate} onChange={(date) => setStartDate(date)} />
                         </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">User Email</span>
+                            </label>
+                            <input type="email" placeholder="" name="email" className="input input-bordered" required />
+                        </div>
+
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">User Name</span>
+                            </label>
+                            <input type="text" placeholder="" name="name" className="input input-bordered" required />
+                        </div>
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Description</span>
@@ -102,7 +117,7 @@ const Create = () => {
                 </div>
 
                 <div className="bg-base-100 shrink-0 lg:max-w-xl p-5 lg:p-8 rounded-xl shadow-2xl space-y-5">
-                    <h1 className="text-2xl font-medium flex flex-row justify-center items-center gap-1">Create Multiple Assignments <SlDocs /></h1>
+                    <h1 className="text-2xl font-medium flex flex-row justify-center items-center gap-1">Create Multiple Assignments <IoDocumentsSharp /></h1>
                     <p>To create multiple assignments just drag and drop your excel file below.</p>
                     <form >
                         <div className="form-control">

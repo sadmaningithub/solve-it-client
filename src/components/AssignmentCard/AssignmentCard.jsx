@@ -1,6 +1,7 @@
 import { BsBarChart } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
 import { IoCheckmarkCircleOutline, IoEyeOutline } from "react-icons/io5";
+import { MdOutlineDelete } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,7 @@ const AssignmentCard = ({ assignment }) => {
 
     console.log(assignment);
 
-    const { title, marks, thumbnail, level, dueDate } = assignment
+    const { _id, title, marks, thumbnail, level, dueDate } = assignment
 
     return (
         <div>
@@ -25,8 +26,9 @@ const AssignmentCard = ({ assignment }) => {
                     <p className="flex flex-row items-center gap-1"> <IoCheckmarkCircleOutline /> {marks}</p>
                     <div className="card-actions justify-between items-center">
                         <div className="flex flex-row gap-2">
-                            <Link className="btn "> <IoEyeOutline />View</Link>
+                            <Link to={`/assignments/${_id}`} className="btn "> <IoEyeOutline />View</Link>
                             <Link className="btn "> <FaEdit />Edit</Link>
+                            <Link className="btn "> <MdOutlineDelete />Remove</Link>
                         </div>
                         <span className="flex flex-row items-center gap-1"> <SlCalender /> {dueDate}</span>
                     </div>
