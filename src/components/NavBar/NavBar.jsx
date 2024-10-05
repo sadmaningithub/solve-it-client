@@ -14,14 +14,14 @@ const NavBar = () => {
         <li> <Link to='/pendingAssignments'> Pending Assignments </Link> </li>
     </>
 
-    const handleLogOut = e =>{
+    const handleLogOut = () => {
         logOut()
-        .then(() => {
-            // Sign-out successful.
-          }).catch((error) => {
-            console.log(error);
-            // An error happened.
-          });
+            .then(() => {
+                // Sign-out successful.
+            }).catch((error) => {
+                console.log(error);
+                // An error happened.
+            });
     }
 
     return (
@@ -68,11 +68,13 @@ const NavBar = () => {
 
                     {
                         user ? <div className="dropdown dropdown-end">
-                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                <div className="w-10 rounded-full">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom" data-tip={user.email}>
+                                <div className="w-full rounded-full " >
                                     <img
-                                        alt="Tailwind CSS Navbar component"
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        className="bg-white"
+                                        
+                                        alt="User"
+                                        src="https://i.ibb.co.com/vzbRY7H/gray-user-profile-icon-png-f-P8-Q1-P.png" />
                                 </div>
                             </div>
                             <ul
@@ -81,7 +83,7 @@ const NavBar = () => {
                                 <li>
                                     <a className="justify-between">
                                         Profile
-                                        <span className="badge">New</span>
+
                                     </a>
                                 </li>
                                 <li><a>Settings</a></li>
