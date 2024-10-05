@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import regSvg from '../assets/register.svg'
 
 const Register = () => {
@@ -33,7 +34,9 @@ const Register = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" placeholder="password" className="input input-bordered" required />
-                                
+                                <label className="label">
+                                    <p>Already Have an account? <Link to='/login' className='text-blue-500'>Login</Link> </p>
+                                </label>
                             </div>
                             <input className='btn w-full mt-5' type="submit" value="Register" />
                         </form>

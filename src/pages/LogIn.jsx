@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import loginSvg from '../assets/login.svg'
 
 const LogIn = () => {
@@ -22,7 +23,7 @@ const LogIn = () => {
                                 </label>
                                 <input type="password" placeholder="password" className="input input-bordered" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <p>Need an account? <Link to='/register' className='text-blue-500'>Register</Link> </p>
                                 </label>
                             </div>
                             <input className='btn w-full' type="submit" value="Login" />
