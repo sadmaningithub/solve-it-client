@@ -15,6 +15,8 @@ import Register from './pages/Register';
 import AssignmentDetails from './pages/AssignmentDetails';
 import Update from './pages/Update';
 import AuthProvider from './providers/AuthProvider';
+import SubmitPage from './pages/SubmitPage';
+import AllPending from './pages/AllPending';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
       },
       {
         path: '/pendingAssignments',
+        element: <AllPending></AllPending>
+      },
+      {
+        path: '/myPendingAssignments',
         element: <Pending></Pending>
       },
       {
@@ -54,7 +60,12 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
-      }
+      },
+      {
+        path: 'assignments/submit/:id',
+        element: <SubmitPage></SubmitPage>,
+        loader: ({params}) => fetch(`http://localhost:5000/assignments/submit/${params.id}`)
+      },
     ]
   },
 ]);

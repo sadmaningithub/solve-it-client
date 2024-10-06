@@ -24,7 +24,7 @@ const Assignments = () => {
                         <input type="text" name="search" placeholder="search..." className="input input-bordered w-full max-w-md" id="" />
 
                         <select defaultValue={'DEFAULT'} name="level" className="select select-bordered ">
-                            <option value='DEFAULT' disabled selected>Select Any</option>
+                            <option value='DEFAULT' disabled>Select Any</option>
                             <option value='Hard'>Hard</option>
                             <option value='Medium'>Medium</option>
                             <option value='Easy' >Easy</option>

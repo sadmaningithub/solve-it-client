@@ -11,7 +11,10 @@ const NavBar = () => {
         <li> <Link to='/'> Home </Link> </li>
         <li> <Link to='/assignments'> Assignments </Link> </li>
         <li> <Link to='/createAssignment'> Create Assignment </Link> </li>
-        <li> <Link to='/pendingAssignments'> Pending Assignments </Link> </li>
+        <li>
+            <Link to='/pendingAssignments'> Pending Assignments </Link>
+        </li>
+
     </>
 
     const handleLogOut = () => {
@@ -72,7 +75,7 @@ const NavBar = () => {
                                 <div className="w-full rounded-full " >
                                     <img
                                         className="bg-white"
-                                        
+
                                         alt="User"
                                         src="https://i.ibb.co.com/vzbRY7H/gray-user-profile-icon-png-f-P8-Q1-P.png" />
                                 </div>
@@ -86,10 +89,10 @@ const NavBar = () => {
 
                                     </a>
                                 </li>
-                                <li><a>Settings</a></li>
+                                <li> <Link to='/myPendingAssignments'> My Submitted <br /> Assignments </Link> </li>
                                 <li onClick={handleLogOut}><a>Logout</a></li>
                             </ul>
-                        </div> : <div className="">
+                        </div> : <div className="flex flex-row">
                             <Link to='/login' className="btn btn-outline mr-1"> Log in </Link>
                             <Link to='/register' className="btn btn-outline"> Register </Link>
                         </div>

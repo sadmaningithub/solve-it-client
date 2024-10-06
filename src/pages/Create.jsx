@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast, { Toaster } from "react-hot-toast";
 import { IoDocumentsSharp } from "react-icons/io5";
 import { MdEditDocument } from "react-icons/md";
+import { authContext } from "../providers/AuthProvider";
 
 const Create = () => {
+
+    const { user } = useContext(authContext)
 
     const [startDate, setStartDate] = useState(new Date());
 
@@ -20,7 +23,7 @@ const Create = () => {
         const email = form.email.value;
         const name = form.name.value;
         const description = form.description.value;
-        const assignmentDoc = { title, marks, thumbnail, level, dueDate,email, name, description };
+        const assignmentDoc = { title, marks, thumbnail, level, dueDate, email, name, description };
         console.log(assignmentDoc);
         fetch('http://localhost:5000/assignments', {
             method: 'POST',
@@ -35,7 +38,7 @@ const Create = () => {
                 if (data.insertedId) {
                     toast.success('Assignment Created Successfully!')
                 }
-                else{
+                else {
                     toast.error('Something went wrong. Please try again')
                 }
             })
@@ -91,14 +94,14 @@ const Create = () => {
                             <label className="label">
                                 <span className="label-text">User Email</span>
                             </label>
-                            <input type="email" placeholder="" name="email" className="input input-bordered" required />
+                            <input type="email" defaultValue={user?.email} placeholder="" name="email" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">User Name</span>
                             </label>
-                            <input type="text" placeholder="" name="name" className="input input-bordered" required />
+                            <input type="text" defaultValue={user?.displayName} placeholder="" name="name" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control">
@@ -111,8 +114,8 @@ const Create = () => {
 
                         <input className="btn mt-5 w-full" type="submit" value="Submit" />
                         <Toaster
-                        position="top-right"
-                        reverseOrder={false} />
+                            position="top-right"
+                            reverseOrder={false} />
                     </form>
                 </div>
 

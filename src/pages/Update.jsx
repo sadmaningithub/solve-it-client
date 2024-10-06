@@ -62,7 +62,7 @@ const Update = () => {
     }
 
     return (
-        <div className="my-12">
+        <div className="my-12 flex flex-row justify-center">
             
             <div className="bg-base-100 shrink-0 w-full lg:max-w-xl p-5 lg:p-8 rounded-xl shadow-2xl">
                 <div className="mb-5">
@@ -109,7 +109,7 @@ const Update = () => {
                         <label className="label">
                             <span className="label-text">User Email</span>
                         </label>
-                        <input type="email" defaultValue={assignment.email} name="email" className="input input-bordered" required />
+                        <input type="email" defaultValue={assignment.email? assignment.email : '' } name="email" className="input input-bordered" required />
                     </div>
 
                     <div className="form-control">
