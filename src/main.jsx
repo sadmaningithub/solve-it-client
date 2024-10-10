@@ -17,6 +17,8 @@ import Update from './pages/Update';
 import AuthProvider from './providers/AuthProvider';
 import SubmitPage from './pages/SubmitPage';
 import AllPending from './pages/AllPending';
+import Mark from './pages/Mark';
+import MarkAssignment from './pages/MarkAssignment';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +59,16 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <LogIn></LogIn>
+      },
+      {
+        path: '/assignment/pending/:id',
+        element: <Mark></Mark>,
+        loader: ({params}) => fetch(`http://localhost:5000/assignment/pending/${params.id}`)
+      },
+      {
+        path: '/assignment/mark/:id',
+        element: <MarkAssignment></MarkAssignment>,
+        loader: ({params}) => fetch(`http://localhost:5000/assignment/mark/${params.id}`)
       },
       {
         path: '/register',

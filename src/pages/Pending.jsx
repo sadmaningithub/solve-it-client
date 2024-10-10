@@ -23,16 +23,16 @@ const Pending = () => {
 
     return (
         <div className="my-12">
-            <h1 className="mb-5 text-xl font-medium">Pending Assignments {mySubmitted.length} </h1>
+            <h1 className="mb-5 text-xl font-medium">You have submitted {mySubmitted.length} assignments. </h1>
             <div>
                 <div className="overflow-x-auto bg-base-200 rounded-xl p-5 lg:p-10">
                     <table className="table">
                         {/* head */}
-                        <thead>
-                            <tr>
+                        <thead className="">
+                            <tr className="">
 
                                 <th>Title</th>
-                                <th>Url</th>
+                                <th>Thumbnail</th>
                                 <th>Name</th>
                                 <th>Action</th>
                             </tr>

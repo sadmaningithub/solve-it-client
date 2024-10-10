@@ -1,37 +1,38 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { authContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 
 
-const SubmitPage = () => {
+const MarkAssignment = () => {
 
     const { id } = useParams();
-    const [assignment, setAssignment] = useState();
-    const { user } = useContext(authContext);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/assignments/submit/${id}`)
+        fetch(`http://localhost:5000/submitted/${id}`)
             .then(res => res.json())
             .then(data => {
+                setData(data)
                 console.log(data);
-                setAssignment(data)
             })
     }, [])
 
-    const handleSubmit = e => {
+    const handleMarking = e => {
         e.preventDefault();
         const form = e.target;
+        console.log(form);
         const title = form.title.value;
         const assignmentId = form.id.value;
         const url = form.url.value;
         const email = form.email.value;
         const name = form.name.value;
         const note = form.note.value;
-        const submitDetails = { title, assignmentId, url, email, name, note }
+        const marks = form.marks.value;
+        const examinerNote = form.examinerNote.value;
+        const submitDetails = { title, assignmentId, url, email, name, note, marks, examinerNote }
         console.log(submitDetails);
-        fetch('http://localhost:5000/submitted', {
-            method: 'POST',
+        fetch(`http://localhost:5000/submitted/${id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
@@ -39,14 +40,23 @@ const SubmitPage = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.insertedId) {
+                console.log(data);
+                if (data.modifiedCount > 0) {
                     Swal.fire({
-                        title: "Great!",
-                        text: "You've submitted the assignment.",
+                        title: "Marked!",
+                        text: "The assignment has been marked",
                         icon: "success"
                     });
                 }
+                else if(data.modifiedCount == 0){
+                    Swal.fire({
+                        title: "Couldn't Mark",
+                        text: "Try again after making one or more changes in the form.",
+                        icon: "error"
+                    });
+                }
             })
+
     }
 
     return (
@@ -55,7 +65,7 @@ const SubmitPage = () => {
             <div className="flex flex-row justify-center">
 
 
-                <form onSubmit={handleSubmit} className="card-body max-w-lg rounded-xl shadow-2xl">
+                <form onSubmit={handleMarking} className="card-body max-w-lg rounded-xl shadow-2xl">
                     <div className="text-center">
                         <h1 className="text-xl font-medium">Submit Assignment </h1>
                     </div>
@@ -63,52 +73,62 @@ const SubmitPage = () => {
                         <label className="label">
                             <span className="label-text">Assignment Title</span>
                         </label>
-                        <input type="text" defaultValue={assignment?.title} placeholder="" name="title" className="input input-bordered" required />
+                        <input type="text" defaultValue={data?.title} placeholder="" name="title" className="input input-bordered" required />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Assignment Id</span>
                         </label>
-                        <input type="text" defaultValue={assignment?._id} className="input input-bordered" name="id"></input>
+                        <input type="text" defaultValue={data?._id} className="input input-bordered" name="id"></input>
 
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">PDF/Doc Link</span>
                         </label>
-                        <input type="url" placeholder="PDF/Doc Link" name="url" className="input input-bordered" required />
+                        <input type="url" defaultValue={data?.url} placeholder="PDF/Doc Link" name="url" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">User email</span>
                         </label>
-                        <input type="email" defaultValue={user?.email} name="email" className="input input-bordered" required />
+                        <input type="email" defaultValue={data?.email} name="email" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">User Name</span>
                         </label>
-                        <input type="text" defaultValue={user?.displayName} placeholder="name" name="name" className="input input-bordered" required />
+                        <input type="text" defaultValue={data?.displayName} placeholder="name" name="name" className="input input-bordered" />
                     </div>
 
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Quick Note</span>
                         </label>
-                        <textarea className="textarea textarea-bordered" name="note" placeholder="Quick Note"></textarea>
+                        <textarea className="textarea textarea-bordered" defaultValue={data?.note} name="note" placeholder="Quick Note"></textarea>
 
                     </div>
-                    <div>
+                    <div className="form-control">
                         <label className="label">
-                            <span className="font-medium">Note:</span>Please check all the input data again before submitting.
+                            <span className="label-text">Give Marks</span>
                         </label>
+                        <input type="text" placeholder="give marks" name="marks" className="input input-bordered" required />
+                    </div>
+
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Examiner Note</span>
+                        </label>
+                        <textarea className="textarea textarea-bordered" name="examinerNote" placeholder="Note"></textarea>
+
                     </div>
                     <input className="btn mt-5" type="submit" value="Submit" />
                 </form>
             </div>
+
         </div>
     );
 };
 
-export default SubmitPage;
+export default MarkAssignment;

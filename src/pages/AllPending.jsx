@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllPending = () => {
 
@@ -21,7 +21,7 @@ const AllPending = () => {
                             <th>Submitted by</th>
                             <th>Name</th>
                             <th>Status</th>
-                            <th>Marks</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,8 +34,8 @@ const AllPending = () => {
                                     <td>{singleData.url}</td>
                                     <td>{singleData.email}</td>
                                     <td>{singleData.name}</td>
-                                    <td>Pending</td>
-                                    <td> <button className="btn">Give Mark</button> </td>
+                                    <td>{singleData.marks? singleData.marks : 'pending'}</td>
+                                    <td> <Link to={`/assignment/pending/${singleData._id}`} className="btn"> View</Link> </td>
                                 </tr>)
                         }
 
