@@ -8,12 +8,10 @@ const NavBar = () => {
     const { user, logOut } = useContext(authContext)
 
     const navLink = <>
-        <li> <Link to='/'> Home </Link> </li>
-        <li> <Link to='/assignments'> Assignments </Link> </li>
-        <li> <Link to='/createAssignment'> Create Assignment </Link> </li>
-        <li>
-            <Link to='/pendingAssignments'> Pending Assignments </Link>
-        </li>
+        <li> <Link className="font-medium text-base" to='/'> Home </Link> </li>
+        <li> <Link className="font-medium text-base" to='/assignments'> Assignments </Link> </li>
+        <li> <Link className="font-medium text-base" to='/createAssignment'> Create Assignment </Link> </li>
+        <li> <Link className="font-medium text-base" to='/pendingAssignments'> Pending Assignments </Link></li>
 
     </>
 
