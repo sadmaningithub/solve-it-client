@@ -4,15 +4,33 @@ import AssignmentCard from "../components/AssignmentCard/AssignmentCard";
 
 const Assignments = () => {
 
+    // const [search, setSearch] = useState('')
     const [assignments, setAssignments] = useState([])
+
+
 
     useEffect(() => {
         fetch('http://localhost:5000/assignments')
             .then(res => res.json())
             .then(data => {
                 setAssignments(data)
+                // console.log(search);
             })
     }, [])
+
+    // const handleSearch = e =>{
+    //     e.preventDefault();
+    //     const form = e.target;
+    //     const level = form.level.value;
+    //     setSearch(level)
+    //     console.log(search);
+    //     fetch(`http://localhost:5000/assignments?level=${search}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAssignments(data)
+    //             // console.log(search);
+    //         })
+    // }
 
     return (
         <div className="my-12">

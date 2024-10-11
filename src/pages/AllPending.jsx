@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const AllPending = () => {
 
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className="my-12">

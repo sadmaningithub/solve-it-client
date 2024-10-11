@@ -8,7 +8,7 @@ const Pending = () => {
     const { user } = useContext(authContext)
     const [mySubmitted, setMySubmitted] = useState([]);
 
-    console.log(user?.email);
+    // console.log(user?.email);
 
     const url = `http://localhost:5000/submitted?email=${user?.email}`
 
@@ -16,7 +16,7 @@ const Pending = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setMySubmitted(data)
             })
     }, [user?.email, url])
@@ -34,6 +34,8 @@ const Pending = () => {
                                 <th>Title</th>
                                 <th>Thumbnail</th>
                                 <th>Name</th>
+                                <th>Marks</th>
+                                <th>Notes</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -45,7 +47,9 @@ const Pending = () => {
                                         <td>{submitted.title}</td>
                                         <td className="">{submitted.url}  </td>
                                         <td>{submitted.name}</td>
-                                        <td><Link> <button className="btn">Action</button> </Link></td>
+                                        <td>{submitted.marks}</td>
+                                        <td>{submitted.examinerNote}</td>
+                                        <td><Link className="btn"> View </Link></td>
                                     </tr>
                                 )
                             }
