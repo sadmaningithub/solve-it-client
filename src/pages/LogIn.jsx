@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginSvg from '../assets/login.svg'
 import { useContext } from 'react';
 import { authContext } from '../providers/AuthProvider';
@@ -6,6 +6,8 @@ import { authContext } from '../providers/AuthProvider';
 const LogIn = () => {
 
     const { signIn } = useContext(authContext)
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -20,6 +22,8 @@ const LogIn = () => {
                 // Signed in 
                 const user = userCredential.user
                 console.log(user);
+
+                navigate(location?.state? location.state : '/')
             })
             .catch((error) => {
                 const errorCode = error.code;
