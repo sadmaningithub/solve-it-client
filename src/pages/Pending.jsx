@@ -16,7 +16,7 @@ const Pending = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                console.log(data);
                 setMySubmitted(data)
             })
     }, [user?.email, url])
@@ -32,7 +32,7 @@ const Pending = () => {
                             <tr className="">
 
                                 <th>Title</th>
-                                <th>Thumbnail</th>
+                                <th>Doc/Pdf Link</th>
                                 <th>Name</th>
                                 <th>Marks</th>
                                 <th>Notes</th>

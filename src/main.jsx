@@ -19,6 +19,7 @@ import SubmitPage from './pages/SubmitPage';
 import AllPending from './pages/AllPending';
 import Mark from './pages/Mark';
 import MarkAssignment from './pages/MarkAssignment';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -45,16 +46,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/createAssignment',
-        element: <Create></Create>
+        element: <PrivateRoute> <Create></Create> </PrivateRoute>
       },
       {
         path: '/pendingAssignments',
-        element: <AllPending></AllPending>,
+        element: <PrivateRoute> <AllPending></AllPending></PrivateRoute>,
         loader: ()=> fetch('http://localhost:5000/submitted')
       },
       {
         path: '/myPendingAssignments',
-        element: <Pending></Pending>
+        element: <PrivateRoute> <Pending></Pending></PrivateRoute>
       },
       {
         path: '/login',
