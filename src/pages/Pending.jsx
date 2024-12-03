@@ -10,7 +10,7 @@ const Pending = () => {
 
     // console.log(user?.email);
 
-    const url = `http://localhost:5000/submitted?email=${user?.email}`
+    const url = `https://solve-it-server.vercel.app/submitted?email=${user?.email}`
 
     useEffect(() => {
         fetch(url)

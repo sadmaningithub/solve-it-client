@@ -7,6 +7,7 @@ import { SlCalender } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { authContext } from "../../providers/AuthProvider";
+import PropTypes from 'prop-types';
 
 
 const AssignmentCard = ({ assignment }) => {
@@ -33,7 +34,7 @@ const AssignmentCard = ({ assignment }) => {
             }).then((result) => {
                 if (result.isConfirmed) {
 
-                    fetch(`http://localhost:5000/assignments/${_id}`, {
+                    fetch(`https://solve-it-server.vercel.app/assignments/${_id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -85,5 +86,9 @@ const AssignmentCard = ({ assignment }) => {
         </div>
     );
 };
+
+AssignmentCard.propTypes ={
+    assignment: PropTypes.object.isRequired
+}
 
 export default AssignmentCard;

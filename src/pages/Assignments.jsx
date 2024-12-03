@@ -10,7 +10,7 @@ const Assignments = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/assignments')
+        fetch('https://solve-it-server.vercel.app/assignments')
             .then(res => res.json())
             .then(data => {
                 setAssignments(data)
@@ -24,7 +24,7 @@ const Assignments = () => {
     //     const level = form.level.value;
     //     setSearch(level)
     //     console.log(search);
-    //     fetch(`http://localhost:5000/assignments?level=${search}`)
+    //     fetch(`https://solve-it-server.vercel.app/assignments?level=${search}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setAssignments(data)

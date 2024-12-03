@@ -14,7 +14,7 @@ const Update = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/assignments/${id}`)
+        fetch(`https://solve-it-server.vercel.app/assignments/${id}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -34,7 +34,7 @@ const Update = () => {
         const name = form.name.value;
         const description = form.description.value;
         const updatedDoc = { title, marks, thumbnail, level, dueDate, email, name, description }
-        fetch(`http://localhost:5000/assignments/update/${id}`, {
+        fetch(`https://solve-it-server.vercel.app/assignments/update/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

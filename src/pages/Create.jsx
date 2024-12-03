@@ -25,7 +25,7 @@ const Create = () => {
         const description = form.description.value;
         const assignmentDoc = { title, marks, thumbnail, level, dueDate, email, name, description };
         console.log(assignmentDoc);
-        fetch('http://localhost:5000/assignments', {
+        fetch('https://solve-it-server.vercel.app/assignments', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

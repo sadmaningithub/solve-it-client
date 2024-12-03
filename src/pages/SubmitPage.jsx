@@ -11,7 +11,7 @@ const SubmitPage = () => {
     const { user } = useContext(authContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/assignments/submit/${id}`)
+        fetch(`https://solve-it-server.vercel.app/assignments/submit/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -30,7 +30,7 @@ const SubmitPage = () => {
         const note = form.note.value;
         const submitDetails = { title, assignmentId, url, email, name, note }
         console.log(submitDetails);
-        fetch('http://localhost:5000/submitted', {
+        fetch('https://solve-it-server.vercel.app/submitted', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

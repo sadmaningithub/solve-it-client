@@ -9,7 +9,7 @@ const MarkAssignment = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/submitted/${id}`)
+        fetch(`https://solve-it-server.vercel.app/submitted/${id}`)
             .then(res => res.json())
             .then(data => {
                 setData(data)
@@ -31,7 +31,7 @@ const MarkAssignment = () => {
         const examinerNote = form.examinerNote.value;
         const submitDetails = { title, assignmentId, url, email, name, note, marks, examinerNote }
         console.log(submitDetails);
-        fetch(`http://localhost:5000/submitted/${id}`, {
+        fetch(`https://solve-it-server.vercel.app/submitted/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

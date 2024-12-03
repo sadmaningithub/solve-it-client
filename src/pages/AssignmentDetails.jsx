@@ -13,7 +13,7 @@ const AssignmentDetails = () => {
     // console.log(id);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/assignments/${id}`)
+        fetch(`https://solve-it-server.vercel.app/assignments/${id}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

@@ -37,12 +37,12 @@ const router = createBrowserRouter([
       {
         path: '/assignments/:id',
         element: <AssignmentDetails></AssignmentDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/assignments/${params.id}`)
+        loader: ({ params }) => fetch(`https://solve-it-server.vercel.app/assignments/${params.id}`)
       },
       {
         path: '/assignments/update/:id',
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:5000/assignments/update/${params.id}`)
+        loader: ({ params }) => fetch(`https://solve-it-server.vercel.app/assignments/update/${params.id}`)
       },
       {
         path: '/createAssignment',
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       {
         path: '/pendingAssignments',
         element: <PrivateRoute> <AllPending></AllPending></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/submitted')
+        loader: ()=> fetch('https://solve-it-server.vercel.app/submitted')
       },
       {
         path: '/myPendingAssignments',
@@ -64,12 +64,12 @@ const router = createBrowserRouter([
       {
         path: '/assignment/pending/:id',
         element: <Mark></Mark>,
-        loader: ({params}) => fetch(`http://localhost:5000/assignment/pending/${params.id}`)
+        loader: ({params}) => fetch(`https://solve-it-server.vercel.app/assignment/pending/${params.id}`)
       },
       {
         path: '/assignment/mark/:id',
         element: <MarkAssignment></MarkAssignment>,
-        loader: ({params}) => fetch(`http://localhost:5000/assignment/mark/${params.id}`)
+        loader: ({params}) => fetch(`https://solve-it-server.vercel.app/assignment/mark/${params.id}`)
       },
       {
         path: '/register',
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       {
         path: 'assignments/submit/:id',
         element: <SubmitPage></SubmitPage>,
-        loader: ({params}) => fetch(`http://localhost:5000/assignments/submit/${params.id}`)
+        loader: ({params}) => fetch(`https://solve-it-server.vercel.app/assignments/submit/${params.id}`)
       },
     ]
   },

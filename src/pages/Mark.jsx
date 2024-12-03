@@ -7,7 +7,7 @@ const Mark = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/submitted/${id}`)
+        fetch(`https://solve-it-server.vercel.app/submitted/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
